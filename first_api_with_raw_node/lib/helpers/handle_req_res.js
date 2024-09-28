@@ -36,31 +36,26 @@ handler.handleReqRes = (req, res) => {
 
     const chosenHandler = routes[trimPath] ? routes[trimPath] : notFoundHandler;
 
-    // now call chosenHandler function...it calles mean calling handle.sampleHandler
-    // or handle.notFoundHandler..During calling pass
-    // requestProperties(may be optional) and response
-    chosenHandler(requestProperties, (statusCode, payload) => {
-        statusCode = typeof statusCode === 'number' ? statusCode : 500;
-        payload = typeof payload === 'object' ? payload : {};
-        const payloadString = JSON.stringify(payload);
-
-        // return the final response
-        res.writeHead(statusCode);
-        res.end(payloadString);
-    });
-
     // this is for when user post
     req.on('data', (buffer) => {
         realData += decoder.write(buffer);
     });
 
-    //
-
     req.on('end', () => {
         realData += decoder.end();
         console.log(realData);
-        // hanlde response
-        res.end('Hello Programmers..hi4');
+        // now call chosenHandler function...it calles mean calling handle.sampleHandler
+        // or handle.notFoundHandler..During calling pass
+        // requestProperties(may be optional) and response
+        chosenHandler(requestProperties, (statusCode, payload) => {
+            statusCode = typeof statusCode === 'number' ? statusCode : 500;
+            payload = typeof payload === 'object' ? payload : {};
+            const payloadString = JSON.stringify(payload);
+
+            // return the final response
+            res.writeHead(statusCode);
+            res.end(payloadString);
+        });
     });
 };
 

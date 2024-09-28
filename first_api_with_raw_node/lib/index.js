@@ -1,21 +1,22 @@
 // dependcencies
 const http = require('http');
-
 const { handleReqRes } = require('./helpers/handle_req_res');
+const environments = require('./helpers/environments');
+const data = require('./data_lib/data');
 
 // app object - module scaffolding
 const app = {};
 
-// confiquration
-app.config = {
-    port: 3000,
-};
+// insert data by creating file
+data.create('info', 'country_info', { name: 'Saudi Arabia', language: 'Arabic' }, (err) => {
+    console.log(err);
+});
 
 // create server
 app.createServer = () => {
     const server = http.createServer(app.handleReqRes);
-    server.listen(app.config.port, () => {
-        console.log(`listening to port ${app.config.port}`);
+    server.listen(environments.port, () => {
+        console.log(`listening to port ${environments.port}`);
     });
 };
 

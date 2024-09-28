@@ -3,8 +3,9 @@
     "lodash": "^4.17.21"
   },
   "scripts": {
-    "start": "nodemone index",
-    "test": "echo \"Error: not test specified\" && exit 1"
+    "start": "NODE_ENV=staging nodemon lib/index.js",
+    "production": "NODE_ENV=production nodemon lib/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "eslint": "^8.2.0",
