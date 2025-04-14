@@ -12,6 +12,21 @@ data.create('info', 'country_info', { name: 'Saudi Arabia', language: 'Arabic' }
     console.log(err);
 });
 
+// // get data
+// data.read('info', 'country_info', (err, callbackData) => {
+//     console.log(err, callbackData);
+// });
+
+// // update data
+// data.update('info', 'country_info', { name: 'Bangldesh', language: 'Bangla' }, (err) => {
+//     console.log(err);
+// });
+
+// delte file data
+// data.delete('info', 'country_info', (err) => {
+//     console.log(err);
+// });
+
 // create server
 app.createServer = () => {
     const server = http.createServer(app.handleReqRes);
