@@ -8,11 +8,11 @@ const data = require('./data_lib/data');
 const app = {};
 
 // insert data by creating file
-data.create('info', 'country_info', { name: 'Saudi Arabia', language: 'Arabic' }, (err) => {
-    console.log(err);
-});
+// data.create('info', 'country_info', { name: 'Saudi Arabia', language: 'Arabic' }, (err) => {
+//     console.log(err);
+// });
 
-// // get data
+// get data
 // data.read('info', 'country_info', (err, callbackData) => {
 //     console.log(err, callbackData);
 // });

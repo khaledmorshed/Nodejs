@@ -3,6 +3,7 @@ const url = require('url');
 const { StringDecoder } = require('string_decoder');
 const routes = require('../routes/route');
 const { notFoundHandler } = require('../handlers/not_found_handler');
+const { parseJSON } = require('./utils');
 
 // module scaffolding
 const handler = {};
@@ -44,6 +45,9 @@ handler.handleReqRes = (req, res) => {
     req.on('end', () => {
         realData += decoder.end();
         console.log(realData);
+
+        requestProperties.body = parseJSON(realData);
+
         // now call chosenHandler function...it calles mean calling handle.sampleHandler
         // or handle.notFoundHandler..During calling pass
         // requestProperties(may be optional) and response
@@ -53,6 +57,7 @@ handler.handleReqRes = (req, res) => {
             const payloadString = JSON.stringify(payload);
 
             // return the final response
+            res.setHeader('Content-Type', 'application/json');// To know the client that passing data is json formate
             res.writeHead(statusCode);
             res.end(payloadString);
         });
