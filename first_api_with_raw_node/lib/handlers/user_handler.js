@@ -251,7 +251,7 @@ handler._users.delete = (requestProperties, callBack) => {
             }
         });
     } else {
-        callBack(400, {
+        callBack(400, { 
             error: 'There was a problem in you request!',
         });
     }
