@@ -1,4 +1,4 @@
-nodue_modules
+node_modules
 .env
 public/uploads
 
